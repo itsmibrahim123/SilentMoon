@@ -1,0 +1,72 @@
+import 'package:flutter/material.dart';
+import '../../../sleep/presentation/pages/sleep_screen.dart';
+import '../../../../core/constants/app_colors.dart';
+import '../../../../core/constants/app_assets.dart';
+import '../../../../core/styles/app_typography.dart';
+
+class WelcomeSleepScreen extends StatelessWidget {
+  const WelcomeSleepScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
+    final width = size.width;
+    final height = size.height;
+    // Reference: 414 x 896
+    double w(double px) => px * width / 414;
+    double h(double px) => px * height / 896;
+    double fs(double px) => px * width / 414;
+
+    return Scaffold(
+      body: Stack(
+        children: [
+          // Sleep background image covering entire screen
+          Positioned.fill(
+            child: Image.asset(AppAssets.sleepBg, fit: BoxFit.cover),
+          ),
+
+          // GET STARTED button
+          Positioned(
+            left: w(20),
+            top: h(739),
+            child: Container(
+              width: w(374),
+              height: h(63),
+              decoration: BoxDecoration(
+                color: AppColors.primaryPurple,
+                borderRadius: BorderRadius.circular(w(38)),
+              ),
+              child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: AppColors.primaryPurple,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(w(38)),
+                  ),
+                  elevation: 0,
+                  padding: EdgeInsets.zero,
+                ),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const SleepScreen(),
+                    ),
+                  );
+                },
+                child: Text(
+                  'GET STARTED',
+                  style: AppTypography.label.copyWith(
+                    fontSize: fs(14),
+                    height: 1.081,
+                    letterSpacing: 0.05 * fs(14),
+                    color: AppColors.textWhite,
+                  ),
+                ),
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}

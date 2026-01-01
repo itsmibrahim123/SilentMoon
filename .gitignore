@@ -1,0 +1,70 @@
+# -----------------------
+# 1. SECURITY (CRITICAL)
+# -----------------------
+serviceAccountKey.json
+*.env
+.env
+firebase_options.dart
+
+# -----------------------
+# 2. BACKEND / NODE.JS
+# -----------------------
+node_modules/
+package.json
+package-lock.json
+seed.js
+npm-debug.log
+
+# -----------------------
+# 3. FLUTTER / DART STANDARD
+# -----------------------
+.dart_tool/
+.packages
+.pub/
+build/
+.flutter-plugins
+.flutter-plugins-dependencies
+
+# -----------------------
+# 4. ANDROID
+# -----------------------
+android/gradle/
+android/gradlew
+android/gradlew.bat
+android/local.properties
+android/.gradle
+android/captures/
+android/gradlew
+android/**/generated/
+android/**/gradle/
+android/**/build/
+android/app/google-services.json
+
+# -----------------------
+# 5. IOS / MACOS
+# -----------------------
+ios/Flutter/App.framework
+ios/Flutter/Flutter.framework
+ios/Flutter/Generated.xcconfig
+ios/Flutter/app.flx
+ios/Flutter/app.zip
+ios/ServiceDefinitions.json
+ios/Runner/GeneratedPluginRegistrant.*
+ios/Runner/GoogleService-Info.plist
+**/ios/**/xcuserdata/
+**/ios/**/derivedData/
+
+# -----------------------
+# 6. IDE / EDITOR
+# -----------------------
+.idea/
+.vscode/
+*.iml
+*.ipr
+*.iws
+
+# -----------------------
+# 7. OS FILES
+# -----------------------
+.DS_Store
+Thumbs.db

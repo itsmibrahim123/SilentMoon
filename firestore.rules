@@ -1,0 +1,80 @@
+
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Users
+    match /users/{userId} {
+      allow read: if request.auth != null;
+      allow write: if request.auth != null && request.auth.uid == userId;
+    }
+
+    // Topics
+    match /topics/{topicId} {
+      allow read: if request.auth != null;
+      allow write: if false; // Admin only
+    }
+
+    // Courses
+    match /courses/{courseId} {
+      allow read: if request.auth != null;
+      allow write: if false; // Admin only
+
+      // Sessions subcollection
+      match /sessions/{sessionId} {
+        allow read: if request.auth != null;
+        allow write: if false; // Admin only
+      }
+    }
+
+    // Music
+    match /music/{musicId} {
+      allow read: if request.auth != null;
+      allow write: if false; // Admin only
+    }
+
+    // Tracks
+    match /tracks/{trackId} {
+      allow read: if request.auth != null;
+      allow write: if false; // Admin only
+    }
+
+    // Sleep Stories
+    match /sleep_stories/{storyId} {
+      allow read: if request.auth != null;
+      allow write: if false; // Admin only
+    }
+
+    // Daily Thoughts
+    match /daily_thoughts/{thoughtId} {
+      allow read: if request.auth != null;
+      allow write: if false; // Admin only
+    }
+
+    // Recommendations
+    match /recommendations/{recommendationId} {
+      allow read: if request.auth != null;
+      allow write: if false; // Admin only
+    }
+
+    // User-specific subcollections
+    match /users/{userId} {
+
+      // Favorites
+      match /favorites/{favoriteId} {
+        allow read, write: if request.auth != null && request.auth.uid == userId;
+      }
+
+      // Downloads
+      match /downloads/{downloadId} {
+        allow read, write: if request.auth != null && request.auth.uid == userId;
+      }
+
+      // Reminders
+      match /reminders/{reminderId} {
+        allow read, write: if request.auth != null && request.auth.uid == userId;
+      }
+    }
+  }
+}
